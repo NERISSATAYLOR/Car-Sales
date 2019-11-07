@@ -1,13 +1,3 @@
-export const reducer = (state, action) => {
-    switch (action.type) {
-        case "BUY_ITEM":
-            return { ...state, name: action.payload };
-        case "REMOVE_FEATURE":
-            return { ...state, name: action.payload };
-        default:
-            return state;
-    }
-}
 export const initialState = {
     additionalPrice: 0,
     car: {
@@ -24,3 +14,36 @@ export const initialState = {
         { id: 4, name: 'Rear spoiler', price: 250 }
     ]
 };
+
+export const reducer = (state = initialState, action) => {
+
+    switch (action.type) {
+        case "BUY_ITEM":
+            return {
+                ...state,
+                additionalPrice: (state.additionalPrice + action.payload.price),
+                car: { ...state.car, features: [...state.car.features, action.payload] },
+
+                additionalFeatures: state.additionalFeatures.filter((feature) => {
+                    return feature.id !== action.payload;
+                })
+
+
+
+            }
+        case "REMOVE_FEATURE":
+            return {
+                ...state,
+                additionalPrice: (state.additionalPrice - action.payload.price),
+                car: {
+                    ...state.car, features: state.car.features.filter(feature => {
+                        return feature.id !== action.payload.id
+                    })
+                },
+                additionalFeatures: [...state.additionalFeatures, action.payload]
+            }
+
+        default:
+            return state;
+    }
+}

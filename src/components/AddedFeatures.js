@@ -1,6 +1,7 @@
 import React from 'react';
 import { connect } from "react-redux";
 import AddedFeature from './AddedFeature';
+import { decrement } from '../actions/index';
 
 const AddedFeatures = props => {
   return (
@@ -18,8 +19,14 @@ const AddedFeatures = props => {
     </div>
   );
 };
-const mapDispatchToProps = {
+const mapStateToProps = state => {
+  return {
+    car: state.car,
+    features: state.car.features,
+    item: state.car.features.item
+
+  }
 
 }
 
-export default connect(state => state, mapDispatchToProps)(AddedFeatures);
+export default connect(mapStateToProps, { decrement })(AddedFeatures);
