@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { increment } from '../actions/index';
 
 const AdditionalFeatures = props => {
-  console.log('props', props)
+  //console.log('props', props)
   return (
     <div className="content">
       <h4>Additional Features</h4>
@@ -23,7 +23,7 @@ const AdditionalFeatures = props => {
 const mapStateToProps = state => {
   return {
     additionalFeatures: state.additionalFeatures,
-    item: state.additionalFeatures.item
+    // item: state.additionalFeatures.item
   }
 }
 export default connect(mapStateToProps, { increment })(AdditionalFeatures);

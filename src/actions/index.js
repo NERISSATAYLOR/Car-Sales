@@ -2,8 +2,7 @@
 
 //action types
 export const BUY_ITEM = "BUY_ITEM";
-export const REMOVE_FEATURES = "REMOVE_FEATURES";
-export const UPDATE_TOTAL = "UPDATE_TOTAL";
+export const REMOVE_FEATURE = "REMOVE_FEATURE";
 
 //action creators (actions)
 export const increment = item => {
@@ -13,15 +12,9 @@ export const increment = item => {
         payload: item
     }
 }
-export const decrement = item => {
+export const decrement = feature => {
     return {
-        type: REMOVE_FEATURES,
-        payload: item
-    }
-}
-export const updatetotal = item => {
-    return {
-        type: UPDATE_TOTAL,
-        payload: item
+        type: REMOVE_FEATURE,
+        payload: feature
     }
 }

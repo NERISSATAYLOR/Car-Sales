@@ -1,4 +1,4 @@
-import React, { useReducer, useState } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import { increment, decrement } from './actions/index';
 
@@ -9,17 +9,7 @@ import Total from './components/Total';
 
 
 
-const App = (props) => {
-
-
-
-  const removeFeature = item => {
-    // dispatch an action here to remove an item
-  };
-
-  const buyItem = item => {
-    // dipsatch an action here to add an item
-  };
+const App = props => {
 
   return (
     <div className="boxes">
@@ -35,11 +25,12 @@ const App = (props) => {
   );
 };
 const mapStateToProps = state => {
-  console.log('mapStateToProps', state);
+  //console.log('mapStateToProps', state);
   return {
     additionalPrice: state.additionalPrice,
     car: state.car,
     additionalFeatures: state.AdditionalFeatures,
+
   }
 
 }
